@@ -8,8 +8,50 @@ const routes = [
   {
     path: '/',
     name: 'index',
-    component: IndexView
+    component: IndexView,
+    children: [
+      {
+        path: '/',
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ '../views/index/components/LeftView.vue'
+          )
+      },
+      {
+        path: '/nav/0',
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ '../views/index/components/LeftView.vue'
+          )
+      },
+      {
+        path: '/nav/1',
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ '../views/index/components/CodeView.vue'
+          )
+      },
+      {
+        path: '/nav/2',
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ '../views/index/components/ElementUi.vue'
+          )
+      }
+      // {
+      //   path: '/nav/:id',
+      //   component: () =>
+      //     import(
+      //       /* webpackChunkName: "about" */ '../views/index/components/NavView.vue'
+      //     )
+      // }
+    ]
   }
+  // {
+  //   path: '/login',
+  //   component: () =>
+  //     import(/* webpackChunkName: "about" */ '../views/login/LoginView.vue')
+  // }
   // {
   //   path: '/about',
   //   name: 'about',
