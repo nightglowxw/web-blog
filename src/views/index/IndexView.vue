@@ -54,7 +54,9 @@ export default {
     // }
   },
   created() {
-    // console.log('aaa')
+    console.log('aaa')
+    console.log(this)
+
     this.getList()
   },
   methods: {
@@ -70,7 +72,11 @@ export default {
   width: 100%;
   height: 300px;
   /* background-color: @bgColor; */
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(39,186,155,1) 100%);
+  background: radial-gradient(
+    circle,
+    rgba(63, 94, 251, 1) 0%,
+    rgba(39, 186, 155, 1) 100%
+  );
   z-index: -9999;
 }
 .el-container {

@@ -86,9 +86,9 @@ export default {
   computed: mapState({
     // 箭头函数可使代码更简练
     // 更新中
-    dataArticle: (state) => state.list.dataArticle,
+    dataArticle: (state) => state.localData.dataArticle,
     // 留言板
-    dataMsg: (state) => state.list.dataMsg
+    dataMsg: (state) => state.localData.dataMsg
     // tableData: dataArticle
   }),
   data() {
@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     handleCurrentChange() {
-      this.$store.dispatch('getList')
+      // this.$store.dispatch('getList')
     }
   }
 }
