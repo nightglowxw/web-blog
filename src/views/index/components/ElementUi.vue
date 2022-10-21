@@ -1,5 +1,98 @@
 <template>
   <div class="container">
+    <input @input="onInput" :value="localValue" />
+    <span>{{ localValue }}</span>
+    ------------
+    <br>
+    <br>
+    <br>
+    <br>
+    <input type="color" />
+    <p id="colorMe">点击选择颜色</p>
+    <form method="post">
+      <input type="range" name="range" min="0" max="100" step="1" value="" />
+    </form>
+
+    <form action="" method="get">
+      <label for="boyfriend">请选择您心仪的男朋友</label>
+      <input list="boyfriends" name="boyfriend" id="boyfriend" />
+      <datalist id="boyfriends">
+        <option value="张清博"></option>
+        <option value="彭于晏"></option>
+        <option value="梁朝伟"></option>
+        <option value="胡歌"></option>
+        <option value="吴彦祖"></option>
+      </datalist>
+
+      <input type="submit" />
+    </form>
+    <form oninput="x.value=parseInt(a.value) * parseInt(b.value)">
+      <input type="number" id="a" value="0" />
+      * <input type="number" id="b" value="0" /> =
+      <output name="x" for="a b"></output>
+    </form>
+    <p>普通文本 <mark>突出显示的文本</mark></p>
+    <ul class="content-editable" contenteditable="true">
+      <li>1. 数据一</li>
+      <li>2. 数据二</li>
+      <li>3. 数据三</li>
+    </ul>
+
+    <details>
+      <summary>Click Here to get the user details</summary>
+      <table>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>地址</th>
+          <th>工作</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Rose</td>
+          <td>北京</td>
+          <td>Web前端</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jack</td>
+          <td>上海</td>
+          <td>产品测试</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Tom</td>
+          <td>南京</td>
+          <td>数据分析</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Jerry</td>
+          <td>杭州</td>
+          <td>网络安全</td>
+        </tr>
+      </table>
+    </details>
+
+    <el-button type="text">我是text按钮</el-button>
+    <el-image style="width: 50px; height: 50px"></el-image>
+    <el-form
+      :label-position="labelPosition"
+      label-width="80px"
+      :model="formLabelAlign"
+      label-suffix="+"
+      :inline="true"
+    >
+      <el-form-item label="名称">
+        <el-input v-model="formLabelAlign.name"></el-input>
+      </el-form-item>
+      <el-form-item label="活动区域">
+        <el-input v-model="formLabelAlign.region"></el-input>
+      </el-form-item>
+      <el-form-item label="活动形式">
+        <el-input v-model="formLabelAlign.type"></el-input>
+      </el-form-item>
+    </el-form>
     <div>
       <span>头上一片晴天，心中一个想念</span>
       <el-divider content-position="left">少年包青天</el-divider>
@@ -193,6 +286,13 @@ export default {
   name: 'ElementUi',
   data() {
     return {
+      localValue: '',
+      labelPosition: 'right',
+      formLabelAlign: {
+        name: '',
+        region: '',
+        type: ''
+      },
       currentDate: new Date(),
       activities: [
         {
@@ -220,6 +320,22 @@ export default {
           color: '#cf4444'
         }
       ]
+    }
+  },
+  created() {
+    this.sessionStorage()
+  },
+  methods: {
+    onInput(v) {
+      this.localValue = v.target.value
+      console.log(this.localValue)
+    },
+    sessionStorage() {
+      console.log('5555')
+      sessionStorage.setItem('name', '你好呀')
+      sessionStorage.setItem('name2', 'uuu')
+      // sessionStorage.setItem('name')
+      // sessionStorage.clear()
     }
   }
 }

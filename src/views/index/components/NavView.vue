@@ -2,16 +2,20 @@
   <div class="container">
     <div class="nav">
       <ul>
-        <li
-          class="listCss"
-          v-for="(item, index) in listArr"
-          :key="index"
-          @click="activeVar = index"
-          :class="{ activeCss: activeVar === index }"
-        >
-          <RouterLink :to="`/nav/${index}`">
-            <span>{{ item }}</span>
-          </RouterLink>
+        {{
+          $route.name
+        }}
+        <li class="listCss" :class="{ activeCss: $route.path === '/nav/0' }">
+          <router-link to="/nav/0"><span>「荒诞故事」</span></router-link>
+        </li>
+        <li class="listCss" :class="{ activeCss: $route.path === '/nav/1' }">
+          <router-link to="/nav/1"><span>前端</span></router-link>
+        </li>
+        <li class="listCss" :class="{ activeCss: $route.path === '/nav/2' }">
+          <router-link to="/nav/2"><span>写过的项目</span></router-link>
+        </li>
+        <li class="listCss" :class="{ activeCss: $route.path === '/nav/3' }">
+          <router-link to="/nav/3"><span>element-ui布局练习</span></router-link>
         </li>
       </ul>
     </div>
@@ -19,15 +23,7 @@
 </template>
 <script>
 export default {
-  name: 'NavView',
-  data() {
-    return {
-      // 默认为0(如不需要默认可设为null)，点击时将索引赋值给active，从而实现点击选中效果
-      activeVar: 0,
-      //  循环列表
-      listArr: ['「荒诞故事」', '前端', 'element-ui']
-    }
-  }
+  name: 'NavView'
 }
 </script>
 <style scoped lang="less">
@@ -61,14 +57,7 @@ export default {
         background-color: #2185ea;
         color: #fff;
       }
-      /* &:visited {
-                background-color: #fff!important;
-                color: #000;
-              } */
     }
-    /* li:first-child {
-              padding: 1px 14px 0;
-            } */
   }
 }
 .activeCss {

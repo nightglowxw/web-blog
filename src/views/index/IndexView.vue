@@ -1,6 +1,7 @@
 <template>
   <div class="index">
-    <div class="bg"></div>
+    <div class="bg">
+    </div>
     <el-container>
       <el-header>
         <div class="nav">
@@ -12,7 +13,7 @@
           <div class="info">
             <div class="avatar">
               <el-avatar shape="square" :size="48" :src="squareUrl"></el-avatar>
-              <span>The wanted</span>
+              <span>石林</span>
             </div>
           </div>
           <div class="nav">
@@ -21,7 +22,6 @@
         </div>
         <div class="main">
           <div class="left">
-            <!-- <div>{{ list.dataMsg }}</div> -->
             <router-view></router-view>
           </div>
           <div class="right">
@@ -62,21 +62,25 @@ export default {
   methods: {
     getList() {
       this.$store.dispatch('getList')
+    },
+    userClick() {
+      this.$router.push('/user-admin')
     }
   }
 }
 </script>
+
 <style scoped lang="less">
 .bg {
   position: absolute;
   width: 100%;
   height: 300px;
   /* background-color: @bgColor; */
-  background: radial-gradient(
-    circle,
-    rgba(63, 94, 251, 1) 0%,
-    rgba(39, 186, 155, 1) 100%
-  );
+  // background: radial-gradient(
+  //   circle,
+  //   rgba(63, 94, 251, 1) 0%,
+  //   rgba(39, 186, 155, 1) 100%
+  // );
   z-index: -9999;
 }
 .el-container {
@@ -100,6 +104,7 @@ export default {
   .el-main {
     overflow: visible;
     height: 100%;
+    // background-color: #909399;
     .header {
       position: relative;
       height: 120px;
@@ -128,7 +133,6 @@ export default {
       .left {
         min-width: 650px;
         min-height: 1000px;
-        background-color: #fff;
       }
     }
   }
